@@ -20,7 +20,7 @@ spring:
       label: master
   #rabbitmq相关配置
   rabbitmq:
-    host: 192.168.0.104
+    host: ${LINUXHOST}
     port: 5672
     username: guest
     password: guest
