@@ -1,6 +1,10 @@
 package dut.zfl.springcloud.controller;
 
 
+import java.util.List;
+import java.util.concurrent.TimeUnit;
+import javax.annotation.Resource;
+
 import dut.zfl.springcloud.entities.CommonResult;
 import dut.zfl.springcloud.entities.Payment;
 import dut.zfl.springcloud.service.PaymentService;
@@ -8,11 +12,11 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
-import org.springframework.web.bind.annotation.*;
-
-import javax.annotation.Resource;
-import java.util.List;
-import java.util.concurrent.TimeUnit;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
 
 /**
  * @Author Zhangfanglong
@@ -84,5 +88,10 @@ public class PaymentController {
             e.printStackTrace();
         }
         return serverPort;
+    }
+
+    @GetMapping("/payment/zipkin")
+    public String paymentZipkin(){
+        return "paymentZipkin fall back";
     }
 }

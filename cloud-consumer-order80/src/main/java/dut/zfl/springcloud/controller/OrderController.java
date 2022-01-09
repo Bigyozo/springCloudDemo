@@ -1,5 +1,9 @@
 package dut.zfl.springcloud.controller;
 
+import java.net.URI;
+import java.util.List;
+import javax.annotation.Resource;
+
 import dut.zfl.springcloud.entities.CommonResult;
 import dut.zfl.springcloud.entities.Payment;
 import dut.zfl.springcloud.lb.LoadBalancer;
@@ -11,10 +15,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
-
-import javax.annotation.Resource;
-import java.net.URI;
-import java.util.List;
 
 /**
  * @Author Zhangfanglong
@@ -69,5 +69,11 @@ public class OrderController {
         ServiceInstance serviceInstance = loadBalancer.instances(instances);
         URI uri = serviceInstance.getUri();
         return restTemplate2.getForObject(uri + "/payment/lb", String.class);
+    }
+
+    @GetMapping("/consumer/payment/zipkin")
+    public String paymentZipkin(){
+        String result = restTemplate2.getForObject("http://localhost:8001"+"/payment/zipkin", String.class);
+        return result;
     }
 }
