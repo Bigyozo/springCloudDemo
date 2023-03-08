@@ -1,3 +1,4 @@
+Language : 简体中文 | [English](./README_ENG.md) 
 # SpringCloud 微服务组件模板代码
 - 注册中心: Eureka,Zookeeper,Consul
 - 负载均衡: Ribbon
@@ -6,4 +7,4 @@
 - 路由网关: Gateway
 - 分布式配置中心: SpringCloud Config
 - 消息总线: SpringCloud Bus
-
+- 消息驱动: SpringCloud Stream
